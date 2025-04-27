@@ -12,8 +12,8 @@ import (
 )
 
 type args struct {
-	Count   int    `arg:"--count,required" help:"出力するデータ件数: 桁数の関係で999999までを想定"`
-	AppName string `arg:"--app"            help:"Application Code: 指定なしの場合全てのテストデータを生成する e.g. app1"`
+	Count   int    `arg:"--count,required" help:"Number of data items to be output: Maximum is 999999"`
+	AppName string `arg:"--app"            help:"Application Code: If not specified, all test data will be generated e.g. app1"`
 }
 
 func main() {

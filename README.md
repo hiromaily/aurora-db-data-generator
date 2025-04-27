@@ -19,3 +19,8 @@ LINES TERMINATED BY '\n';
 
 go run ./cmd/test_data_generator/ --app <app_name> --count 10000
 ```
+
+## TODO
+
+- [x] for MySQL
+- [x] for PostgreSQL

@@ -18,7 +18,7 @@ type app struct {
 
 func newApp(logger logger.Logger, mysqlDSN string) (*app, error) {
 	// DB client
-	schemaRepo, err := db.NewDBClient(mysqlDSN)
+	schemaRepo, err := db.NewMySQLClient(mysqlDSN)
 	if err != nil {
 		logger.Error("failed to call NewDBClient()", "error", err)
 		return nil, err

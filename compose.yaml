@@ -1,4 +1,19 @@
 services:
+  # docker compose exec db-postgres bash
+  db-postgres:
+    image: postgres:17.4
+    container_name: db-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=todo
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-pg-data:/var/lib/postgresql/data
+      - ./docker/postgres/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+
   # docker compose exec db-mysql bash
   db-mysql:
     #image: mysql:9.3.0
@@ -18,3 +33,4 @@ services:
 
 volumes:
   db-mysql-data:
+  db-pg-data:

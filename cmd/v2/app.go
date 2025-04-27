@@ -16,9 +16,21 @@ type app struct {
 	analyzer   *analyzer
 }
 
-func newApp(logger logger.Logger, mysqlDSN string) (*app, error) {
+func newApp(logger logger.Logger, dbKind, dsn string) (*app, error) {
 	// DB client
-	schemaRepo, err := db.NewDBClient(mysqlDSN)
+	var schemaRepo dbrepo.SchemaRepository
+	var err error
+
+	switch dbKind {
+	case db.DBKindPostgreSQL:
+		// PostgreSQL
+		schemaRepo, err = db.NewPostgreClient(dsn)
+	case db.DBKindMySQL:
+		// MySQL
+		schemaRepo, err = db.NewMySQLClient(dsn)
+	default:
+		return nil, fmt.Errorf("unsupported DB kind: %s", dbKind)
+	}
 	if err != nil {
 		logger.Error("failed to call NewDBClient()", "error", err)
 		return nil, err

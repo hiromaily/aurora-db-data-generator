@@ -34,3 +34,4 @@ run-v1:
 .PHONY: run-v2
 run-v2:
 	go run ./cmd/v2/ --app app1 --count 100
+	go run ./cmd/v2/ --app app1 --count 100 --db pgsql

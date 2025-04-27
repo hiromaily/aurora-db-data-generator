@@ -6,12 +6,12 @@ import (
 )
 
 type schemaRepository struct {
-	dbClient *db.DBClient
+	dbClient *db.MySQLClient
 	dbName   string
 	logger   logger.Logger
 }
 
-func NewSchemaRepository(dbClient *db.DBClient, logger logger.Logger) *schemaRepository {
+func NewSchemaRepository(dbClient *db.MySQLClient, logger logger.Logger) *schemaRepository {
 	return &schemaRepository{
 		dbClient: dbClient,
 		dbName:   dbClient.GetDBName(),
